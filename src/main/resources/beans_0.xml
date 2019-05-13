@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="customBeanPostProcessor" class="com.tastingtea.spring.demo_0.CustomBeanPostProcessor"/>
+
+    <bean id="notifyServiceByWeixinImpl" class="com.tastingtea.spring.demo_0.NotifyServiceByWeixinImpl" init-method="initBean" destroy-method="destroyBean"/>
+    <bean id="notifyServiceByCellPhoneImpl" class="com.tastingtea.spring.demo_0.NotifyServiceByCellPhoneImpl" />
+    <bean id="order" class="com.tastingtea.spring.demo_0.Order" >
+        <!-- 配置注入NotifyServiceByCellPhoneImpl的实例化对象 -->
+        <property name="notifyService" ref="notifyServiceByCellPhoneImpl"/>
+    </bean>
+</beans>
